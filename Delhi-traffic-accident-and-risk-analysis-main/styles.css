@@ -1,0 +1,284 @@
+/* ==========================================================================
+   Delhi SafeRoads Intelligence Platform - Twilight Plum Theme
+   Palette:
+     - #190019 : Deepest Obsidian Plum (Base background)
+     - #2B124C : Royal Plum (Surfaces, panels, card backgrounds)
+     - #522B5B : Violet Wine (Borders, secondary surfaces, inputs, hover)
+     - #854F6C : Dusky Rose Mauve (Primary accent, buttons, badges, highlights)
+     - #DFB6B2 : Soft Blush Dust (Secondary text, subtitles, muted icons)
+     - #FBE4D8 : Warm Cream Ivory (Primary text, headings, prominent numbers)
+   ========================================================================== */
+
+:root {
+  --c-deep: #190019;
+  --c-surface: #2B124C;
+  --c-surface-hover: #371761;
+  --c-border: #522B5B;
+  --c-accent: #854F6C;
+  --c-accent-hover: #9c5d80;
+  --c-blush: #DFB6B2;
+  --c-cream: #FBE4D8;
+}
+
+/* Background canvas gradient */
+body {
+  background-color: var(--c-deep) !important;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(133, 79, 108, 0.25), transparent 70%),
+    radial-gradient(circle at 100% 100%, rgba(82, 43, 91, 0.2), transparent 50%),
+    linear-gradient(180deg, #190019 0%, #200829 50%, #190019 100%) !important;
+  color: var(--c-cream) !important;
+  min-height: 100vh;
+}
+
+.chart-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(223, 182, 178, 0.35);
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, rgba(133, 79, 108, 0.35), rgba(82, 43, 91, 0.45));
+  color: var(--c-cream);
+  font-size: 0.65rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.chart-expand-btn:hover,
+.chart-expand-btn:focus-visible {
+  border-color: var(--c-blush);
+  box-shadow: 0 0 18px rgba(223, 182, 178, 0.2);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.chart-detail-modal {
+  background: rgba(15, 3, 21, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: chart-modal-fade-in 0.18s ease-out;
+}
+.chart-detail-panel {
+  max-width: 76rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  border-color: rgba(223, 182, 178, 0.35) !important;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.65), 0 0 45px rgba(133, 79, 108, 0.22);
+}
+.chart-detail-canvas {
+  position: relative;
+  width: 100%;
+  height: min(52vh, 560px);
+  min-height: 280px;
+}
+.chart-point-details {
+  padding: 1rem;
+  border: 1px solid rgba(223, 182, 178, 0.3);
+  border-radius: 1rem;
+  background: linear-gradient(120deg, rgba(82, 43, 91, 0.4), rgba(25, 0, 25, 0.75));
+  animation: chart-modal-fade-in 0.2s ease-out;
+}
+.chart-point-primary {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(223, 182, 178, 0.35);
+  border-radius: 9999px;
+  background: rgba(133, 79, 108, 0.3);
+  color: var(--c-cream);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.chart-point-metric {
+  min-height: 5.2rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(82, 43, 91, 0.9);
+  border-radius: 0.8rem;
+  background: rgba(25, 0, 25, 0.58);
+}
+.chart-detail-close {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(223, 182, 178, 0.35);
+  border-radius: 0.8rem;
+  background: rgba(25, 0, 25, 0.7);
+  color: var(--c-blush);
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.chart-detail-close:hover,
+.chart-detail-close:focus-visible {
+  border-color: var(--c-blush);
+  background: var(--c-accent);
+  color: var(--c-cream);
+  outline: none;
+}
+body.chart-detail-open {
+  overflow: hidden;
+}
+@keyframes chart-modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--c-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-accent);
+  border-radius: 9999px;
+  border: 2px solid var(--c-deep);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-blush);
+}
+
+/* Panels and Cards in Twilight Plum Palette */
+.plum-card {
+  background-color: rgba(43, 18, 76, 0.9) !important;
+  border: 1px solid var(--c-border) !important;
+  box-shadow: 0 10px 25px -5px rgba(25, 0, 25, 0.7), 0 8px 10px -6px rgba(25, 0, 25, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.plum-card:hover {
+  border-color: rgba(223, 182, 178, 0.45) !important;
+  box-shadow: 0 15px 30px -5px rgba(133, 79, 108, 0.35);
+}
+
+/* Filter Controls in Twilight Plum */
+.plum-select {
+  background-color: #190019 !important;
+  color: var(--c-cream) !important;
+  border: 1.5px solid var(--c-border) !important;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.plum-select:hover {
+  border-color: var(--c-accent) !important;
+}
+.plum-select:focus {
+  border-color: var(--c-blush) !important;
+  box-shadow: 0 0 0 3px rgba(133, 79, 108, 0.3) !important;
+}
+.plum-select.filter-active {
+  background-color: #2B124C !important;
+  border-color: #DFB6B2 !important;
+  color: #FBE4D8 !important;
+  box-shadow: 0 0 10px rgba(223, 182, 178, 0.3) !important;
+}
+
+/* Primary Plum Buttons */
+.btn-plum {
+  background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-border) 100%) !important;
+  color: var(--c-cream) !important;
+  border: 1px solid rgba(223, 182, 178, 0.3) !important;
+  font-weight: 700;
+  border-radius: 0.6rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(133, 79, 108, 0.35);
+}
+.btn-plum:hover {
+  background: linear-gradient(135deg, var(--c-accent-hover) 0%, var(--c-accent) 100%) !important;
+  border-color: var(--c-blush) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(133, 79, 108, 0.5);
+}
+
+/* Filter Chip Badges */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background-color: rgba(82, 43, 91, 0.85);
+  border: 1px solid var(--c-accent);
+  color: var(--c-cream);
+  font-size: 0.7rem;
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+.filter-chip:hover {
+  background-color: var(--c-accent);
+}
+.filter-chip-remove {
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+.filter-chip-remove:hover {
+  opacity: 1;
+}
+
+/* Severity Tag Styling in Plum Palette */
+.badge-high {
+  background-color: rgba(244, 63, 94, 0.18) !important;
+  color: #fda4af !important;
+  border: 1px solid rgba(244, 63, 94, 0.45) !important;
+}
+.badge-medium {
+  background-color: rgba(133, 79, 108, 0.35) !important;
+  color: #FBE4D8 !important;
+  border: 1px solid rgba(223, 182, 178, 0.4) !important;
+}
+.badge-low {
+  background-color: rgba(82, 43, 91, 0.35) !important;
+  color: #DFB6B2 !important;
+  border: 1px solid rgba(133, 79, 108, 0.4) !important;
+}
+
+/* Table in Plum Palette */
+.plum-table th {
+  background-color: rgba(43, 18, 76, 0.95);
+  color: var(--c-blush);
+  border-bottom: 1px solid var(--c-border);
+}
+.plum-table tr {
+  border-bottom: 1px solid rgba(82, 43, 91, 0.4);
+}
+.plum-table tr:hover {
+  background-color: rgba(82, 43, 91, 0.35);
+}
+
+/* Print Optimization for Reports */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print, header, nav, #filtersBar, .action-btns, footer {
+    display: none !important;
+  }
+  .print-block {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .chart-detail-canvas {
+    height: 42vh;
+    min-height: 230px;
+  }
+  .chart-expand-btn {
+    padding: 0.4rem;
+  }
+  .chart-expand-btn span {
+    display: none;
+  }
+}
